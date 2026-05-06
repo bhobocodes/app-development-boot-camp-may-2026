@@ -140,7 +140,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                             if (name.isEmpty || email.isEmpty || pass.isEmpty) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text('fill all fields')),
+                                const SnackBar(content: Text('fill all fieldsclean')),
                               );
                               return;
                             }
