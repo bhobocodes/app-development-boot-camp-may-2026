@@ -132,20 +132,45 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               borderRadius: BorderRadius.circular(15),
                             ),
                           ),
+
                           onPressed: () {
+                            String name = nameController.text.trim();
+                            String email = emailController.text.trim();
+                            String pass = passController.text.trim();
+
+                            if (name.isEmpty || email.isEmpty || pass.isEmpty) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(content: Text('fill all fields')),
+                              );
+                              return;
+                            }
+
+                            // email validation
+                            if (!email.contains('@') || !email.contains('.')) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(content: Text('Valid email')),
+                              );
+                              return;
+                            }
+
+                            // password length check
+                            if (pass.length < 6) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(content: Text('Password')),
+                              );
+                              return;
+                            }
+
                             ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Registration Successful'),
-                              ),
+                              const SnackBar(content: Text('Registration Successful')),
                             );
 
                             Navigator.pushReplacement(
                               context,
-                              MaterialPageRoute(
-                                builder: (_) => const LoginScreen(),
-                              ),
+                              MaterialPageRoute(builder: (_) => const LoginScreen()),
                             );
                           },
+
                           child: const Text(
                             'Register',
                             style: TextStyle(fontSize: 18, color: Colors.white),
