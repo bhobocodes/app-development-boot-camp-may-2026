@@ -117,3 +117,20 @@ class _LoginScreenState extends State<LoginScreen> {
                               borderRadius: BorderRadius.circular(15),
                             ),
                           ),
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const DashboardScreen(),
+                              ),
+                            );
+                          },
+                          child: const Text(
+                            'Login',
+                            style: TextStyle(fontSize: 18, color: Colors.white),
+                          ),
+                        ),
+                      ),
+
+                      const SizedBox(height: 15),
+
